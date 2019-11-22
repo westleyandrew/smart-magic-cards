@@ -27,7 +27,6 @@ function createCards() {
 
 // Function to clear out the initial button and create new buttons to play the game.
 function createButtons() {
-  // Your Code
   const startButton = document.getElementById('start-game');
   const shuffleButton = document.getElementById('shuffle');
   const showHideButton = document.getElementById('show-hide');
@@ -45,4 +44,19 @@ function startGame() {
   createCards();
 }
 
+function shuffleCards() {
+  console.log('shufflecards');
+}
+
+function showHideCards() {
+  console.log('showhidecards');
+}
+
+function magicCards() {
+  console.log('magiccards');
+}
+
 document.getElementById('start-game').addEventListener('click', startGame);
+document.getElementById('shuffle').addEventListener('click', shuffleCards);
+document.getElementById('show-hide').addEventListener('click', showHideCards);
+document.getElementById('magic').addEventListener('click', magicCards);
