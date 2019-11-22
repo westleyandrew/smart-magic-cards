@@ -1,6 +1,18 @@
 const suits = ['hearts', 'spades', 'diamonds', 'clubs'];
 const cardsWrapper = document.querySelector('.cards-wrapper');
 
+// For each dataObject, create a new card and append it to the DOM
+function drawCards(cards) {
+  cards.forEach((card, i) => {
+    const positionFromLeft = i * 30;
+    const cardElement = document.createElement('div');
+    cardElement.setAttribute('data-value', card.value);
+    cardElement.classList.add('card', `${card.suit}-${card.value}`);
+    cardElement.style.left = `${positionFromLeft}px`;
+    cardsWrapper.append(cardElement);
+  });
+}
+
 function createCards() {
   const cards = [];
   // Create an array with objects containing the value and the suit of each card
@@ -13,16 +25,7 @@ function createCards() {
       cards.push(cardObject);
     }
   });
-
-  // For each dataObject, create a new card and append it to the DOM
-  cards.forEach((card, i) => {
-    const positionFromLeft = i * 30;
-    const cardElement = document.createElement('div');
-    cardElement.setAttribute('data-value', card.value);
-    cardElement.classList.add('card', `${card.suit}-${card.value}`);
-    cardElement.style.left = `${positionFromLeft}px`;
-    cardsWrapper.append(cardElement);
-  });
+  drawCards(cards);
 }
 
 // Function to clear out the initial button and create new buttons to play the game.
@@ -49,7 +52,8 @@ function shuffleCards() {
 }
 
 function showHideCards() {
-  console.log('showhidecards');
+  const cardWrapper = document.querySelector('.cards-wrapper');
+  cardWrapper.classList.add('hidden');
 }
 
 function magicCards() {
