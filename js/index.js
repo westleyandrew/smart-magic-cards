@@ -1,5 +1,6 @@
 const suits = ['hearts', 'spades', 'diamonds', 'clubs'];
 const cardsWrapper = document.querySelector('.cards-wrapper');
+const cards = [];
 
 // For each dataObject, create a new card and append it to the DOM
 function drawCards(cards) {
@@ -14,7 +15,6 @@ function drawCards(cards) {
 }
 
 function createCards() {
-  const cards = [];
   // Create an array with objects containing the value and the suit of each card
   suits.forEach((suit) => {
     for (let i = 1; i <= 13; i += 1) {
@@ -48,12 +48,20 @@ function startGame() {
 }
 
 function shuffleCards() {
-  console.log('shufflecards');
+  for (let i = cards.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [cards[i], cards[j]] = [cards[j], cards[i]];
+  }
+  drawCards(cards);
 }
 
 function showHideCards() {
   const cardWrapper = document.querySelector('.cards-wrapper');
-  cardWrapper.classList.add('hidden');
+  if (document.querySelector('.hidden')) {
+    cardWrapper.classList.remove('hidden');
+  } else {
+    cardWrapper.classList.add('hidden');
+  }
 }
 
 function magicCards() {
