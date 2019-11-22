@@ -28,6 +28,14 @@ function createCards() {
 // Function to clear out the initial button and create new buttons to play the game.
 function createButtons() {
   // Your Code
+  const startButton = document.getElementById('start-game');
+  const shuffleButton = document.getElementById('shuffle');
+  const showHideButton = document.getElementById('show-hide');
+  const magicButton = document.getElementById('magic');
+  startButton.style.display = 'none';
+  shuffleButton.style.display = 'block';
+  showHideButton.style.display = 'block';
+  magicButton.style.display = 'block';
 }
 
 // Function to start the game by clearing the wrapper, creating
