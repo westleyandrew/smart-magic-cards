@@ -3,7 +3,7 @@ const cardsWrapper = document.querySelector('.cards-wrapper');
 const cards = [];
 
 // For each dataObject, create a new card and append it to the DOM
-function drawCards(cards) {
+function drawCards() {
   cards.forEach((card, i) => {
     const positionFromLeft = i * 30;
     const cardElement = document.createElement('div');
@@ -34,7 +34,7 @@ function createButtons() {
   const shuffleButton = document.getElementById('shuffle');
   const showHideButton = document.getElementById('show-hide');
   const magicButton = document.getElementById('magic');
-  startButton.style.display = 'none';
+  startButton.parentNode.removeChild(startButton);
   shuffleButton.style.display = 'block';
   showHideButton.style.display = 'block';
   magicButton.style.display = 'block';
@@ -65,10 +65,19 @@ function showHideCards() {
 }
 
 function magicCards() {
-  console.log('magiccards');
+  suits.forEach((st) => {
+    [...Array(13).keys()].forEach((val) => {
+      const cardIndex = cards.findIndex((card) => (card.value === (val + 1) && card.suit === st));
+      cards.splice(cardIndex, 1);
+      cards.push({ value: (val + 1), suit: st });
+      console.log(cards);
+    });
+  });
+  drawCards(cards);
 }
 
 document.getElementById('start-game').addEventListener('click', startGame);
 document.getElementById('shuffle').addEventListener('click', shuffleCards);
 document.getElementById('show-hide').addEventListener('click', showHideCards);
 document.getElementById('magic').addEventListener('click', magicCards);
+
