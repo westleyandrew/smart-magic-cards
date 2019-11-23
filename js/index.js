@@ -48,11 +48,11 @@ function startGame() {
 }
 
 function shuffleCards() {
-  for (let i = cards.length - 1; i > 0; i -= 1) {
+  for (let i = 51; i > 0; i -= 1) {
     const j = Math.floor(Math.random() * (i + 1));
     [cards[i], cards[j]] = [cards[j], cards[i]];
   }
-  drawCards(cards);
+  drawCards();
 }
 
 function showHideCards() {
@@ -66,11 +66,9 @@ function magicCards() {
       const cardIndex = cards.findIndex((card) => (card.value === (val + 1) && card.suit === st));
       cards.splice(cardIndex, 1);
       cards.push({ value: (val + 1), suit: st });
-      console.log(cards.length);
     });
   });
-  console.log(cards.length);
-  drawCards(cards);
+  drawCards();
 }
 
 document.getElementById('start-game').addEventListener('click', startGame);

@@ -12,6 +12,12 @@ describe('Play game', () => {
     cy.get('p').should('have.exist');
     cy.get('#start-game').should('have.text', "Let's get started").click();
     cy.get('[class*="hearts-"]').should('have.length', 13);
+    cy.get('[class*="spades-"]').should('have.length', 13);
+    cy.get('[class*="diamonds-"]').should('have.length', 13);
+    cy.get('[class*="clubs-"]').should('have.length', 13);
+    cy.get('#shuffle').should('have.text', 'Shuffle');
+    cy.get('#show-hide').should('have.text', 'Show/Hide');
+    cy.get('#magic').should('have.text', 'Magic');
 
     cy.get('#start-game').should('have.not.exist');
     suits.forEach((suit) => {
