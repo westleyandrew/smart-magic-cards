@@ -57,11 +57,7 @@ function shuffleCards() {
 
 function showHideCards() {
   const cardWrapper = document.querySelector('.cards-wrapper');
-  if (document.querySelector('.hidden')) {
-    cardWrapper.classList.remove('hidden');
-  } else {
-    cardWrapper.classList.add('hidden');
-  }
+  cardWrapper.classList.toggle('hidden');
 }
 
 function magicCards() {
@@ -70,9 +66,10 @@ function magicCards() {
       const cardIndex = cards.findIndex((card) => (card.value === (val + 1) && card.suit === st));
       cards.splice(cardIndex, 1);
       cards.push({ value: (val + 1), suit: st });
-      console.log(cards);
+      console.log(cards.length);
     });
   });
+  console.log(cards.length);
   drawCards(cards);
 }
 
@@ -80,4 +77,3 @@ document.getElementById('start-game').addEventListener('click', startGame);
 document.getElementById('shuffle').addEventListener('click', shuffleCards);
 document.getElementById('show-hide').addEventListener('click', showHideCards);
 document.getElementById('magic').addEventListener('click', magicCards);
-
