@@ -25,7 +25,7 @@ function createCards() {
       cards.push(cardObject);
     }
   });
-  drawCards(cards);
+  drawCards();
 }
 
 // Function to clear out the initial button and create new buttons to play the game.
