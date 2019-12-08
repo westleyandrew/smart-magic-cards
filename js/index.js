@@ -2,6 +2,13 @@ const suits = ['hearts', 'spades', 'diamonds', 'clubs'];
 const cardsWrapper = document.querySelector('.cards-wrapper');
 const cards = [];
 
+// Remove the existing cards from the page
+function clearCards() {
+  while (cardsWrapper.firstChild) {
+    cardsWrapper.removeChild(cardsWrapper.firstChild);
+  }
+}
+
 // For each dataObject, create a new card and append it to the DOM
 function drawCards() {
   cards.forEach((card, i) => {
@@ -52,6 +59,7 @@ function shuffleCards() {
     const j = Math.floor(Math.random() * (i + 1));
     [cards[i], cards[j]] = [cards[j], cards[i]];
   }
+  clearCards();
   drawCards();
 }
 
@@ -68,6 +76,7 @@ function magicCards() {
       cards.push({ value: (val + 1), suit: st });
     });
   });
+  clearCards();
   drawCards();
 }
 
